@@ -9,10 +9,11 @@ echo "<tr>
      <td><h2>net salary</h2></td>
      </tr>";
    
-      $myArray = array( array("id" => 1, "name" => "alaa" , "salary" => 600),
+      $myArray = array(
+                 array("id" => 1, "name" => "alaa" , "salary" => 600),
                  array("id" => 1, "name" => "wlaa" , "salary" => 700),
                  array("id" => 1, "name" => "hnaa" , "salary" => 200) 
-    ); 
+                      ); 
     printValues($myArray);
 echo "</table>";
 
@@ -61,7 +62,7 @@ function printValues2($arr) {
         }
     }
 
-    return array('total' => $count, 'values' => $values);
+    // return array('total' => $count, 'values' => $values);
 }
 $arr = json_decode($json, true);
  
@@ -105,10 +106,11 @@ echo "<p>​Write a PHP script to calculate and display average temperature, fiv
 $tem=" 78, 60, 62, 68, 71, 68, 73, 85, 66, 64, 76, 63, 75, 76,73, 68, 62, 73, 72, 65, 74, 62, 62, 65, 64, 68, 73, 75, 79, 73";
 $tem_array=explode(',', $tem);
 $count_array=count($tem_array);
-$sum_array=0;
-foreach($tem_array as $tem){
-    $sum_array+=$tem;
-}
+// $sum_array=0;
+// foreach($tem_array as $tem){
+//     $sum_array+=$tem;
+// }
+$sum_array=array_sum($tem_array);
 $avg_arr=$sum_array/$count_array;
 echo "avg array : $avg_arr";
 echo "<br>";
@@ -149,6 +151,43 @@ echo "<p>make script to make password generator from existing array contains the
         $pass[] = $alphabet[$n];
     }
     echo "password :<h3>". implode($pass). "</h3>"; //turn the array into a string
+
+    echo "<hr>";
+    echo "<h1>task 7</h1>";
+    echo "<table border='1px'>";
+echo "<tr>
+     <td><h2>product</h2></td>
+     <td><h2>price</h2></td>
+     <td><h2>qty</h2></td>
+     </tr>";
+   
+      $myArray = array(
+                 array("pro" => "rose", "price" => "1.25" , "qty" => 15),
+                 array("pro" => "daisy", "price" => "0.75" , "qty" => 25),
+                 array("pro" => "orchid", "price" => "1.15" , "qty" => 7) 
+                      ); 
+    printValues3($myArray);
+echo "</table>";
+
+
+function printValues3($arr) {
+  
+    if(!is_array($arr)){
+        die("ERROR: Input is not an array");
+    }
+    echo "<tr>";
+  
+    foreach($arr as $key=>$value){
+        if(is_array($value)){
+            printValues3($value);
+        } else{     
+            echo "<td>". $value."</td>";
+        }
+     
+    }
+    echo "</tr>"; 
+}
+    
 
 ?>
 
